@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json.schemastore.org/launchsettings.json",
+  "profiles": {
+    "IdentityServer.WebApplication": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": ".well-known/openid-configuration",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://identityserver",
+      "dotnetRunMessages": true
+    }
+  }
+}
