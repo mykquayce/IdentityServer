@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="IdentityServer4" Version="4.1.2" />
+    <PackageReference Include="Yarp.ReverseProxy" Version="1.1.0-rc.1.22152.1" />
   </ItemGroup>
 
 </Project>

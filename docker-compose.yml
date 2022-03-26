@@ -15,6 +15,9 @@ services:
       Clients:0:ClientSecrets:0:Value: h/6VJnVASjaniqTj78ov08ew7isdXH0O+Lo0fxhIZy4=
       Kestrel:Certificates:Default:KeyPath: /run/secrets/localhost.key
       Kestrel:Certificates:Default:Path: /run/secrets/localhost.crt
+      ReverseProxy:Routes:baget-route:ClusterId: baget-cluster
+      ReverseProxy:Routes:baget-route:Match:Hosts:0: baget
+      ReverseProxy:Clusters:baget-cluster:Destinations:baget-destination:Address: https://baget:30443/
     ports:
     - 443:443/tcp
     secrets:
