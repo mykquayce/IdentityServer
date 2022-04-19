@@ -6,7 +6,9 @@
       "launchBrowser": true,
       "launchUrl": ".well-known/openid-configuration",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_Kestrel__Certificates__Default__KeyPath": "%userprofile%\\.aspnet\\https\\identityserver.key",
+        "ASPNETCORE_Kestrel__Certificates__Default__Path": "%userprofile%\\.aspnet\\https\\identityserver.crt"
       },
       "applicationUrl": "https://identityserver",
       "dotnetRunMessages": true
