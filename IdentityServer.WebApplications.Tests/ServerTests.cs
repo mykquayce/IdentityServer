@@ -7,7 +7,7 @@ public class ServerTests
 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "xUnit1004:Test methods should not be skipped", Justification = "requires identity server")]
 	[Theory(Skip = "requires identity server")]
-	[InlineData("https://identityserver")]
+	[InlineData("https://identityserver/")]
 	public async Task<DiscoveryDocumentResponse> GetDiscoveryDocumentTests(string authority)
 	{
 		DiscoveryDocumentResponse disco;
@@ -26,7 +26,7 @@ public class ServerTests
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "xUnit1004:Test methods should not be skipped", Justification = "requires identity server")]
 	[Theory(Skip = "requires identity server")]
-	[InlineData("https://identityserver", "elgatoapi", "8556e52c6ab90d042bb83b3f0c8894498beeb65cf908f519a2152aceb131d3ee", "networkdiscovery")]
+	[InlineData("https://identityserver/", "elgatoapi", "8556e52c6ab90d042bb83b3f0c8894498beeb65cf908f519a2152aceb131d3ee", "networkdiscovery")]
 	public async Task GetAccessTokenTests(string authority, string clientId, string clientSecret, string scope)
 	{
 		var disco = await GetDiscoveryDocumentTests(authority);

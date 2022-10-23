@@ -9,10 +9,15 @@ services:
       ASPNETCORE_HTTPS_PORT: "443"
       ASPNETCORE_URLS: https://+
       ApiScopes:0:Name: networkdiscovery
+      ApiScopes:1:Name: api1
       Clients:0:AllowedGrantTypes:0: client_credentials
       Clients:0:AllowedScopes:0: networkdiscovery
       Clients:0:ClientId: elgatoapi
       Clients:0:ClientSecrets:0:Value: h/6VJnVASjaniqTj78ov08ew7isdXH0O+Lo0fxhIZy4=
+      Clients:1:AllowedGrantTypes:0: client_credentials
+      Clients:1:AllowedScopes:0: api1
+      Clients:1:ClientId: client
+      Clients:1:ClientSecrets:0:Value: K7gNU3sdo+OL0wNhqoVWhr3g6s1xYv72ol/pe/Unols=
       Kestrel:Certificates:Default:KeyPath: /run/secrets/localhost.key
       Kestrel:Certificates:Default:Path: /run/secrets/localhost.crt
       ReverseProxy:Routes:elgatoapi-route:ClusterId: elgatoapi-cluster
