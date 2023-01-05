@@ -20,16 +20,16 @@ services:
       Clients:1:ClientSecrets:0:Value: K7gNU3sdo+OL0wNhqoVWhr3g6s1xYv72ol/pe/Unols=
       Kestrel:Certificates:Default:KeyPath: /run/secrets/localhost.key
       Kestrel:Certificates:Default:Path: /run/secrets/localhost.crt
-      ReverseProxy:Routes:elgatoapi-route:ClusterId: elgatoapi-cluster
-      ReverseProxy:Routes:elgatoapi-route:Match:Hosts:0: elgatoapi
+      ReverseProxy:Routes:homeautomationapi-route:ClusterId: homeautomationapi-cluster
+      ReverseProxy:Routes:homeautomationapi-route:Match:Hosts:0: homeautomationapi
       ReverseProxy:Routes:nuget-route:ClusterId: nuget-cluster
       ReverseProxy:Routes:nuget-route:Match:Hosts:0: baget
       ReverseProxy:Routes:nuget-route:Match:Hosts:1: nuget
       ReverseProxy:Routes:networkdiscovery-route:ClusterId: networkdiscovery-cluster
       ReverseProxy:Routes:networkdiscovery-route:Match:Hosts:0: networkdiscovery
-      ReverseProxy:Clusters:elgatoapi-cluster:Destinations:elgatoapi-destination:Address: https://elgatoapi:46274/
+      ReverseProxy:Clusters:homeautomationapi-cluster:Destinations:homeautomationapi-destination:Address: https://homeautomationapi:20443/
       ReverseProxy:Clusters:nuget-cluster:Destinations:nuget-destination:Address: https://nuget:30443/
-      ReverseProxy:Clusters:networkdiscovery-cluster:Destinations:networkdiscovery-destination:Address: https://networkdiscovery:40443/
+      ReverseProxy:Clusters:networkdiscovery-cluster:Destinations:networkdiscovery-destination:Address: https://networkdiscoveryapi:40443/
     ports:
     - 443:443/tcp
     secrets:
