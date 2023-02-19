@@ -46,6 +46,6 @@ secrets:
   ca.crt:
     file: ${USERPROFILE}\.aspnet\https\ca.crt
   localhost.crt:
-    file: ${USERPROFILE}\.aspnet\https\identityserver.crt
+    file: ${USERPROFILE}\.aspnet\https\localhost.crt
   localhost.key:
-    file: ${USERPROFILE}\.aspnet\https\identityserver.key
+    file: ${USERPROFILE}\.aspnet\https\localhost.key
