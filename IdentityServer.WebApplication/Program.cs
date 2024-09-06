@@ -14,23 +14,12 @@ var builder = WebApplication.CreateBuilder(args);
 		.AddSigningCredential(cert);
 }
 
-builder.Services.AddReverseProxy()
-	.LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"));
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 
 app.UseIdentityServer();
 
-app.UseHttpsRedirection();
-
-static bool dontProxy(HttpRequest r)
-	=> r.Host.Host.Equals("identityserver", StringComparison.OrdinalIgnoreCase);
-
-app.MapWhen(
-	context => !dontProxy(context.Request),
-	b => b.UseRouting().UseEndpoints(e => e.MapReverseProxy()));
 
 app.Run();
 

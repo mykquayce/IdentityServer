@@ -5,47 +5,28 @@ services:
     image: eassbhhtgu/identity-server:latest
     entrypoint: bash -c "/usr/sbin/update-ca-certificates && dotnet IdentityServer.WebApplication.dll"
     environment:
-      ASPNETCORE_ENVIRONMENT: Production
-      ASPNETCORE_HTTPS_PORT: "443"
-      ASPNETCORE_URLS: https://+
-      ApiScopes:0:Name: networkdiscovery
-      ApiScopes:1:Name: api1
+      ApiScopes:0:Name: default
       Clients:0:AllowedGrantTypes:0: client_credentials
-      Clients:0:AllowedScopes:0: networkdiscovery
-      Clients:0:ClientId: elgatoapi
-      Clients:0:ClientSecrets:0:Value: h/6VJnVASjaniqTj78ov08ew7isdXH0O+Lo0fxhIZy4=
-      Clients:1:AllowedGrantTypes:0: client_credentials
-      Clients:1:AllowedScopes:0: api1
-      Clients:1:ClientId: client
-      Clients:1:ClientSecrets:0:Value: K7gNU3sdo+OL0wNhqoVWhr3g6s1xYv72ol/pe/Unols=
-      Kestrel:Certificates:Default:KeyPath: /run/secrets/localhost.key
-      Kestrel:Certificates:Default:Path: /run/secrets/localhost.crt
-      ReverseProxy:Routes:homeautomationapi-route:ClusterId: homeautomationapi-cluster
-      ReverseProxy:Routes:homeautomationapi-route:Match:Hosts:0: homeautomationapi
-      ReverseProxy:Routes:homeautomationapi-route:Match:Hosts:1: homeautomationapi.sarif.local
-      ReverseProxy:Routes:nuget-route:ClusterId: nuget-cluster
-      ReverseProxy:Routes:nuget-route:Match:Hosts:0: baget
-      ReverseProxy:Routes:nuget-route:Match:Hosts:1: baget.sarif.local
-      ReverseProxy:Routes:nuget-route:Match:Hosts:2: nuget
-      ReverseProxy:Routes:nuget-route:Match:Hosts:3: nuget.sarif.local
-      ReverseProxy:Routes:networkdiscovery-route:ClusterId: networkdiscovery-cluster
-      ReverseProxy:Routes:networkdiscovery-route:Match:Hosts:0: networkdiscovery
-      ReverseProxy:Routes:networkdiscovery-route:Match:Hosts:1: networkdiscovery.sarif.local
-      ReverseProxy:Clusters:homeautomationapi-cluster:Destinations:homeautomationapi-destination:Address: https://homeautomationapi:20443/
-      ReverseProxy:Clusters:nuget-cluster:Destinations:nuget-destination:Address: https://nuget:30443/
-      ReverseProxy:Clusters:networkdiscovery-cluster:Destinations:networkdiscovery-destination:Address: https://networkdiscovery:40443/
+      Clients:0:AllowedScopes:0: default
+      Clients:0:ClientId: client1
+      # secret1
+      Clients:0:ClientSecrets:0:Value: WxFhjC5EAnh30M0JIe0Wa58Xb1BYf8kedTTdKUbbd9Y=
+      Kestrel:Certificates:Default:KeyPath: /usr/local/share/localhost.key
+      Kestrel:Certificates:Default:Path: /usr/local/share/localhost.crt
     ports:
     - 443:443/tcp
     secrets:
-    - source: localhost.crt
-    - source: localhost.key
+    - source: localhost_crt
+      target: /usr/local/share/localhost.crt
+    - source: localhost_key
+      target: /usr/local/share/localhost.key
     - source: ca.crt
       target: /usr/local/share/ca-certificates/ca.crt
 
 secrets:
   ca.crt:
     file: ${USERPROFILE}\.aspnet\https\ca.crt
-  localhost.crt:
+  localhost_crt:
     file: ${USERPROFILE}\.aspnet\https\localhost.crt
-  localhost.key:
+  localhost_key:
     file: ${USERPROFILE}\.aspnet\https\localhost.key
