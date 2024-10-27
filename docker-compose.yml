@@ -1,9 +1,6 @@
-version: "3.8"
-
 services: 
   api:
     image: eassbhhtgu/identity-server:latest
-    entrypoint: bash -c "/usr/sbin/update-ca-certificates && dotnet IdentityServer.WebApplication.dll"
     environment:
       ApiScopes:0:Name: default
       Clients:0:AllowedGrantTypes:0: client_credentials
@@ -20,13 +17,9 @@ services:
       target: /usr/local/share/localhost.crt
     - source: localhost_key
       target: /usr/local/share/localhost.key
-    - source: ca.crt
-      target: /usr/local/share/ca-certificates/ca.crt
 
 secrets:
-  ca.crt:
-    file: ${USERPROFILE}\.aspnet\https\ca.crt
   localhost_crt:
-    file: ${USERPROFILE}\.aspnet\https\localhost.crt
+    file: ${USERPROFILE}\.aspnet\https\server.crt
   localhost_key:
-    file: ${USERPROFILE}\.aspnet\https\localhost.key
+    file: ${USERPROFILE}\.aspnet\https\server.key
